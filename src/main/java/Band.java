@@ -53,6 +53,18 @@ public class Band {
     this.name = name;
   }
 
+
+  public void delete() {
+    try(Connection con = DB.sql2o.open()){
+      String sql = "DELETE FROM bands WHERE id=:id;"
+      //+" DELETE FROM bands_venues WHERE band_id=:id;"
+      ;
+      con.createQuery(sql)
+      .addParameter("id", this.id)
+      .executeUpdate();
+    }
+  }
+
   // public void addVenue(String venue) {
   //   Integer venue_id;
   //   Integer relationshipAlreadyExistsChecker;
