@@ -9,21 +9,21 @@ public class VenueTest {
 
   @Test
   public void venue_isInstanceofVenue_true(){
-    Venue testVenue = new Venue("Iron Maiden");
+    Venue testVenue = new Venue("Wonder Ballroom");
     assertTrue(testVenue instanceof Venue);
   }
   @Test
-  public void getName_returnsNameOfBand_true(){
-    Band testBand = new Band("Iron Maiden");
-    assertTrue(testBand.getName().equals("Iron Maiden"));
+  public void getName_returnsNameOfVenue_true(){
+    Venue testVenue = new Venue("Wonder Ballroom");
+    assertTrue(testVenue.getName().equals("Wonder Ballroom"));
   }
-  // @Test
-  // public void saveAndAll_savesToDatabaseAndReceivesId_true(){
-  //   Band testBand = new Band("Karnivool");
-  //   testBand.save();
-  //   Band savedBand = Band.all().get(0);
-  //   assertTrue(testBand.getId() == savedBand.getId());
-  // }
+  @Test
+  public void saveAndGetId_savesToDatabaseAndSavesLocalVenueId_true(){
+    Venue testVenue = new Venue("Wonder Ballroom");
+    testVenue.save();
+    Venue savedVenue = Venue.all().get(0);
+    assertTrue(testVenue.getId() == savedVenue.getId());
+  }
   // @Test
   // public void find_returnsABandFromDatabase_true(){
   //   Band testBandOne = new Band("James Brown");
