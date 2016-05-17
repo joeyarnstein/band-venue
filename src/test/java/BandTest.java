@@ -32,11 +32,17 @@ public class BandTest {
     assertTrue(testBandOne.getId() == sameBandFromDatabase.getId());
   }
   @Test
-  public void updateNam_updatesBandNameInDatabase_tre(){
+  public void updateNam_updatesBandName_true(){
     Band marsVolta = new Band("At the Drive-In");
     marsVolta.save();
     marsVolta.updateName("The Mars Volta");
     assertTrue(marsVolta.getName().equals("The Mars Volta"));
   }
-
+  @Test
+  public void updateNam_updatesBandNameInDatabase_tre(){
+    Band marsVolta = new Band("At the Drive-In");
+    marsVolta.save();
+    marsVolta.updateName("The Mars Volta");
+    assertTrue(Band.find(marsVolta.getId()).getName().equals("The Mars Volta"));
+  }
 }
