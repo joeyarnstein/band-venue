@@ -31,4 +31,12 @@ public class BandTest {
     Band sameBandFromDatabase = Band.find(testBandOne.getId());
     assertTrue(testBandOne.getId() == sameBandFromDatabase.getId());
   }
+  @Test
+  public void updateNam_updatesBandNameInDatabase_tre(){
+    Band marsVolta = new Band("At the Drive-In");
+    marsVolta.save();
+    marsVolta.updateName("The Mars Volta");
+    assertTrue(marsVolta.getName().equals("The Mars Volta"));
+  }
+
 }
