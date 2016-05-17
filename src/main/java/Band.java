@@ -65,46 +65,46 @@ public class Band {
     }
   }
 
-  // public void addVenue(String venue) {
-  //   Integer venue_id;
-  //   Integer relationshipAlreadyExistsChecker;
-  //   try(Connection con = DB.sql2o.open()) {
-  //     String sql = "SELECT id FROM venues WHERE name=:name;";
-  //     venue_id = con.createQuery(sql)
-  //       .addParameter("name", tag)
-  //       .executeAndFetchFirst(Integer.class);
-  //   }
-  //   if (venue_id != null) {
-  //
-  //     try(Connection con = DB.sql2o.open()){
-  //       String sql = "SELECT id FROM bands_venues WHERE venue_id=:venue_id AND band_id=:band_id;";
-  //       relationshipAlreadyExistsChecker = con.createQuery(sql)
-  //         .addParameter("venue_id", venue_id)
-  //         .addParameter("band_id", this.id)
-  //         .executeAndFetchFirst(Integer.class);
-  //     }
-  //
-  //     if (relationshipAlreadyExistsChecker == null) {
-  //       try(Connection con = DB.sql2o.open()) {
-  //         String sql = "INSERT INTO bands_venues (band_id, venue_id) VALUES (:band_id, :venue_id);";
-  //         con.createQuery(sql)
-  //           .addParameter("venue_id", venue_id)
-  //           .addParameter("band_id", this.getId())
-  //           .executeUpdate();
-  //       }
-  //     }
-  //
-  //   } else {
-  //     Venue newVenue = new Venue(venue);
-  //     newVenue.save();
-  //     try(Connection con = DB.sql2o.open()) {
-  //       String sql = "INSERT INTO bands_venues (venue_id, band_id) VALUES (:venue_id, :band_id);";
-  //       con.createQuery(sql)
-  //         .addParameter("venue_id", newVenue.getId())
-  //         .addParameter("band_id", this.getId())
-  //         .executeUpdate();
-  //     }
-  //   }
-  // }
+  public void addVenue(String venue) {
+    Integer venue_id;
+    Integer relationshipAlreadyExistsChecker;
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT id FROM venues WHERE name=:name;";
+      venue_id = con.createQuery(sql)
+        .addParameter("name", venue)
+        .executeAndFetchFirst(Integer.class);
+    }
+    if (venue_id != null) {
+
+      try(Connection con = DB.sql2o.open()){
+        String sql = "SELECT id FROM bands_venues WHERE venue_id=:venue_id AND band_id=:band_id;";
+        relationshipAlreadyExistsChecker = con.createQuery(sql)
+          .addParameter("venue_id", venue_id)
+          .addParameter("band_id", this.id)
+          .executeAndFetchFirst(Integer.class);
+      }
+
+      if (relationshipAlreadyExistsChecker == null) {
+        try(Connection con = DB.sql2o.open()) {
+          String sql = "INSERT INTO bands_venues (band_id, venue_id) VALUES (:band_id, :venue_id);";
+          con.createQuery(sql)
+            .addParameter("venue_id", venue_id)
+            .addParameter("band_id", this.getId())
+            .executeUpdate();
+        }
+      }
+
+    } else {
+      Venue newVenue = new Venue(venue);
+      newVenue.save();
+      try(Connection con = DB.sql2o.open()) {
+        String sql = "INSERT INTO bands_venues (venue_id, band_id) VALUES (:venue_id, :band_id);";
+        con.createQuery(sql)
+          .addParameter("venue_id", newVenue.getId())
+          .addParameter("band_id", this.getId())
+          .executeUpdate();
+      }
+    }
+  }
 
 }
