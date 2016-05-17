@@ -18,38 +18,10 @@ public class VenueTest {
     assertTrue(testVenue.getName().equals("Wonder Ballroom"));
   }
   @Test
-  public void saveAndGetId_savesToDatabaseAndSavesLocalVenueId_true(){
-    Venue testVenue = new Venue("Wonder Ballroom");
+  public void save_savesToDatabaseAndSavesLocalVenue_true(){
+    Venue testVenue = new Venue("Crystal");
     testVenue.save();
     Venue savedVenue = Venue.all().get(0);
     assertTrue(testVenue.getId() == savedVenue.getId());
   }
-  // @Test
-  // public void find_returnsABandFromDatabase_true(){
-  //   Band testBandOne = new Band("James Brown");
-  //   testBandOne.save();
-  //   Band sameBandFromDatabase = Band.find(testBandOne.getId());
-  //   assertTrue(testBandOne.getId() == sameBandFromDatabase.getId());
-  // }
-  // @Test
-  // public void updateNam_updatesBandName_true(){
-  //   Band marsVolta = new Band("At the Drive-In");
-  //   marsVolta.save();
-  //   marsVolta.updateName("The Mars Volta");
-  //   assertTrue(marsVolta.getName().equals("The Mars Volta"));
-  // }
-  // @Test
-  // public void updateName_updatesBandNameInDatabase_true(){
-  //   Band marsVolta = new Band("At the Drive-In");
-  //   marsVolta.save();
-  //   marsVolta.updateName("The Mars Volta");
-  //   assertTrue(Band.find(marsVolta.getId()).getName().equals("The Mars Volta"));
-  // }
-  // @Test
-  // public void delete_updatesBandNameInDatabase_true(){
-  //   Band marsVolta = new Band("At the Drive-In");
-  //   marsVolta.save();
-  //   marsVolta.delete();
-  //   assertEquals(0, Band.all().size());
-  // }
 }
