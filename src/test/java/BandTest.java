@@ -52,4 +52,21 @@ public class BandTest {
     marsVolta.delete();
     assertEquals(0, Band.all().size());
   }
+  @Test
+  public void addVenue_addsVenueAndBandToJoinTable() {
+    Band myBand = new Band("Death");
+    myBand.save();
+    Venue myVenue = new Venue("Wonder Ballroom");
+    myVenue.save();
+    myBand.addVenue("Wonder Ballroom");
+    assertTrue(myBand.getVenues().get(0).getName().equals(myVenue.getName()));
+  }
+
+  // @Test
+  // public void addTag_createsNewTagIfNonExistant() {
+  //   Recipe myRecipe = new Recipe("taco", "my taco");
+  //   myRecipe.save();
+  //   myRecipe.addTag("new tag");
+  //   assertTrue(myRecipe.getTags().get(0).getName().equals("new tag"));
+  // }
 }
