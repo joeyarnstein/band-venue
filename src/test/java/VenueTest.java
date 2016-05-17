@@ -12,11 +12,11 @@ public class VenueTest {
     Venue testVenue = new Venue("Iron Maiden");
     assertTrue(testVenue instanceof Venue);
   }
-  // @Test
-  // public void getName_returnsNameOfBand_true(){
-  //   Band testBand = new Band("Iron Maiden");
-  //   assertTrue(testBand.getName().equals("Iron Maiden"));
-  // }
+  @Test
+  public void getName_returnsNameOfBand_true(){
+    Band testBand = new Band("Iron Maiden");
+    assertTrue(testBand.getName().equals("Iron Maiden"));
+  }
   // @Test
   // public void saveAndAll_savesToDatabaseAndReceivesId_true(){
   //   Band testBand = new Band("Karnivool");
