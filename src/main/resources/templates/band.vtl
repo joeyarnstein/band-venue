@@ -3,7 +3,7 @@ $band.getName() has played these venues.
 </h1>
 <ul>
   #foreach ($venue in $band.getVenues())
-  <li><a href="/venue/$venue.getId()">$venue.getName()</a></li>
+  <li>$venue.getName()</li>
   #end
 </ul>
 

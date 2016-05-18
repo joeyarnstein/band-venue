@@ -26,9 +26,25 @@ public class AppTest extends FluentTest {
     goTo("http://localhost:4567/");
     assertThat(pageSource()).contains("Band Tracker");
   }
-  // @Test
-  // public void allBandsAreDisplayed(){
-  //   goTo("http://localhost:4567/bands/newband")
-  // }
+
+  @Test
+  public void bandIsCreatedandRoutedTest() {
+    goTo("http://localhost:4567/newband");
+    fill("#band-name").with("James Brown");
+    submit(".btn");
+    assertThat(pageSource()).contains("James Brown");
+  }
+
+  @Test
+  public void bandsPageDisplaysAllBands() {
+    Band firstBand = new Band("Death");
+    Band secondBand = new Band("Life");
+    firstBand.save();
+    secondBand.save();
+    goTo("http://localhost:4567/");
+    click("a", withText("here"));
+    assertThat(pageSource()).contains("Death");
+    assertThat(pageSource()).contains("Life");
+  }
 
 }
