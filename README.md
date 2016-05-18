@@ -1,12 +1,12 @@
-# java_template
+# Band_Tracker
 
 
 
-#### By _**Paul Hess**_
+#### By _**Joey Arnstein**_
 
 ## Description
 
-template for basic student project file structure
+Exercise in many-to-many relationships for SQL integration in java web app.
 
 ## Setup/Installation Requirements
 
@@ -20,8 +20,9 @@ $ postgres
 * _Open a new tab in terminal and create the `repo_db_name` database:_
 ```
 $ psql
-$ CREATE DATABASE repo_db_name;
-$ psql repo_db_name < repo_db_name.sql
+$ CREATE DATABASE band_tracker;
+$ psql band_tracker < band_tracker.sql
+$ CREATE DATABASE band_tracker_test WITH TEMPLATE band_tracker; //for testing
 ```
 * _Navigate back to the directory where this repository has been cloned and run gradle:_
 ```
@@ -50,4 +51,4 @@ _To contact, leave a comment on Github._
 
 *MIT License*
 
-Copyright (c) 2016 **_Paul Hess_**
+Copyright (c) 2016 **_Joey_Arnstein_**
