@@ -49,6 +49,15 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    post("/edit-band", (req,res) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      String editName = req.queryParams("edit-name");
+      Band currentBand = Band.find(Integer.parseInt(req.queryParams("band-id")));
+      currentBand.updateName(editName);
+      res.redirect("/bands/"+currentBand.getId());
+      return null;
+    });
+
     post("/add_venue", (req,res) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       String venueName = req.queryParams("venue-name");

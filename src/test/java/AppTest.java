@@ -31,7 +31,7 @@ public class AppTest extends FluentTest {
   public void bandIsCreatedandRoutedTest() {
     goTo("http://localhost:4567/newband");
     fill("#band-name").with("James Brown");
-    submit(".btn");
+    submit("#new-band-submit");
     assertThat(pageSource()).contains("James Brown");
   }
 
@@ -45,6 +45,17 @@ public class AppTest extends FluentTest {
     click("a", withText("here"));
     assertThat(pageSource()).contains("Death");
     assertThat(pageSource()).contains("Life");
+  }
+
+  @Test
+  public void bandEditNameIntegrated(){
+    Band testBand = new Band("James Brown");
+    testBand.save();
+    int testId = testBand.getId();
+    goTo("http://localhost:4567/bands/"+testId);
+    fill("#edit-name").with("Bobby Brown");
+    submit("#edit-band-submit");
+    assertThat(pageSource()).contains("Bobby Brown");
   }
 
 }
