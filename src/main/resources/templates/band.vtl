@@ -1,0 +1,21 @@
+<h1>
+$band.getName() has played these venues.
+</h1>
+<ul>
+  #foreach ($venue in $band.getVenues())
+  <li><a href="/venue/$venue.getId()">$venue.getName()</a></li>
+  #end
+</ul>
+
+<h3>List venues this band has played at to the list</h3>
+
+<form action="/add_venue" method="post">
+  <div class="form-group form-inline">
+    <label for="venue-name">Name of Venue</label><br>
+    <input type="text" name="venue-name" class="form-control" id="venue-name">
+    <input type="hidden" value="$band.getId()" name="band-id" class="form-control" id="band-id">
+  </div>
+  <button type="submit" class="btn btn-primary" id="new-band-submit">Submit</button>
+</form>
+
+<a href="/bands">Back to all bands</a>

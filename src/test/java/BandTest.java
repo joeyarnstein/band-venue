@@ -53,7 +53,7 @@ public class BandTest {
     assertEquals(0, Band.all().size());
   }
   @Test
-  public void addVenue_addsVenueAndBandToJoinTable() {
+  public void addVenue_addsVenueAndBandToJoinTable_true() {
     Band myBand = new Band("Death");
     myBand.save();
     Venue myVenue = new Venue("Wonder Ballroom");
@@ -62,11 +62,11 @@ public class BandTest {
     assertTrue(myBand.getVenues().get(0).getName().equals(myVenue.getName()));
   }
 
-  // @Test
-  // public void addTag_createsNewTagIfNonExistant() {
-  //   Recipe myRecipe = new Recipe("taco", "my taco");
-  //   myRecipe.save();
-  //   myRecipe.addTag("new tag");
-  //   assertTrue(myRecipe.getTags().get(0).getName().equals("new tag"));
-  // }
+  @Test
+  public void addVenue_createsNewVenueIfNonExistant_true() {
+    Band myBand = new Band("Ween");
+    myBand.save();
+    myBand.addVenue("Mom's Basement");
+    assertTrue(myBand.getVenues().get(0).getName().equals("Mom's Basement"));
+  }
 }

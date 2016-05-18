@@ -17,7 +17,7 @@ public class DatabaseRule extends ExternalResource {
       con.createQuery(deleteBandsQuery).executeUpdate();
       con.createQuery(deleteVenuesQuery).executeUpdate();
       con.createQuery(deleteBandsVenuesQuery).executeUpdate();
-     }
+    }
   }
 
 }
