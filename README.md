@@ -23,6 +23,7 @@ $ psql
 $ CREATE DATABASE band_tracker;
 $ psql band_tracker < band_tracker.sql
 $ CREATE DATABASE band_tracker_test WITH TEMPLATE band_tracker; //for testing
+
 ```
 * _Navigate back to the directory where this repository has been cloned and run gradle:_
 ```
