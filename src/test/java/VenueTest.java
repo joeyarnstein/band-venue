@@ -36,4 +36,11 @@ public class VenueTest {
     Venue savedVenue = Venue.all().get(0);
     assertTrue(testVenue.getId() == savedVenue.getId());
   }
+  @Test
+  public void find_returnsAVenueFromDatabase_true(){
+    Venue testVenue = new Venue("James Brown");
+    testVenue.save();
+    Venue sameVenueFromDatabase = Venue.find(testVenue.getId());
+    assertTrue(testVenue.getId() == sameVenueFromDatabase.getId());
+  }
 }

@@ -1,0 +1,8 @@
+<h1>
+$venue.getName() has had these bands play here.
+</h1>
+<ul>
+  #foreach ($band in $venue.getBands())
+  <li>$band.getName()</li>
+  #end
+</ul>

@@ -72,7 +72,7 @@ public class AppTest extends FluentTest {
   }
 
   @Test
-  public void bandIsCreatedandRoutedTest() {
+  public void venueIsCreatedandRoutedTest() {
     goTo("http://localhost:4567/venues/new");
     fill("#venue-name").with("Wonder Ballroom");
     submit("#new-venue-submit");
