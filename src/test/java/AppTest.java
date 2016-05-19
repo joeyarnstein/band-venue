@@ -79,16 +79,29 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Wonder Ballroom");
   }
 
-    @Test
-    public void venuesPageDisplaysAllBands() {
-      Venue firstVenue = new Venue("Death");
-      Venue secondVenue = new Venue("Life");
-      firstVenue.save();
-      secondVenue.save();
-      goTo("http://localhost:4567/");
-      click("a", withText("venues"));
-      assertThat(pageSource()).contains("Death");
-      assertThat(pageSource()).contains("Life");
-    }
-
+  @Test
+  public void venuesPageDisplaysAllBands() {
+    Venue firstVenue = new Venue("Wonder Ballroom");
+    Venue secondVenue = new Venue("Crystal Ballroom");
+    firstVenue.save();
+    secondVenue.save();
+    goTo("http://localhost:4567/");
+    click("a", withText("venues"));
+    assertThat(pageSource()).contains("Wonder Ballroom");
+    assertThat(pageSource()).contains("Crystal Ballroom");
+  }
+  @Test
+  public void dynamicVenuePageCreatedAndDisplaysBands(){
+    Venue testVenue = new Venue("Roseland Theater");
+    testVenue.save();
+    Band testBand = new Band("Tool");
+    testBand.save();
+    Band testTwoBand = new Band("Bob Dylan");
+    testTwoBand.save();
+    testBand.addVenue("Roseland Theater");
+    testTwoBand.addVenue("Roseland Theater");
+    goTo("http://localhost:4567/venues/"+testVenue.getId());
+    assertThat(pageSource()).contains("Tool");
+    assertThat(pageSource()).contains("Bob Dylan");
+  }
 }
