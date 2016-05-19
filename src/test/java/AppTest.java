@@ -29,7 +29,7 @@ public class AppTest extends FluentTest {
 
   @Test
   public void bandIsCreatedandRoutedTest() {
-    goTo("http://localhost:4567/newband");
+    goTo("http://localhost:4567/bands/new");
     fill("#band-name").with("James Brown");
     submit("#new-band-submit");
     assertThat(pageSource()).contains("James Brown");
@@ -42,7 +42,7 @@ public class AppTest extends FluentTest {
     firstBand.save();
     secondBand.save();
     goTo("http://localhost:4567/");
-    click("a", withText("here"));
+    click("a", withText("bands"));
     assertThat(pageSource()).contains("Death");
     assertThat(pageSource()).contains("Life");
   }
@@ -56,6 +56,27 @@ public class AppTest extends FluentTest {
     fill("#edit-name").with("Bobby Brown");
     submit("#edit-band-submit");
     assertThat(pageSource()).contains("Bobby Brown");
+  }
+
+  @Test
+  public void bandDeleteFunctions(){
+    Band testBand = new Band("James Brown");
+    testBand.save();
+    Band testableBand = new Band("Bobby Brown");
+    testableBand.save();
+    int testId = testBand.getId();
+    goTo("http://localhost:4567/bands/"+testId);
+    click("a", withText("Permenantly delete this band from the database"));
+    assertThat(!(pageSource()).contains("James Brown"));
+    assertThat(pageSource()).contains("Bobby Brown");
+  }
+
+  @Test
+  public void bandIsCreatedandRoutedTest() {
+    goTo("http://localhost:4567/venues/new");
+    fill("#venue-name").with("Wonder Ballroom");
+    submit("#new-venue-submit");
+    assertThat(pageSource()).contains("Wonder Ballroom");
   }
 
 }

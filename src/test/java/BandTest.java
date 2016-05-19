@@ -32,7 +32,7 @@ public class BandTest {
     assertTrue(testBandOne.getId() == sameBandFromDatabase.getId());
   }
   @Test
-  public void updateNam_updatesBandName_true(){
+  public void updateName_updatesBandName_true(){
     Band marsVolta = new Band("At the Drive-In");
     marsVolta.save();
     marsVolta.updateName("The Mars Volta");
