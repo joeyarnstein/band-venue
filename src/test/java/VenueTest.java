@@ -17,6 +17,18 @@ public class VenueTest {
     Venue testVenue = new Venue("Wonder Ballroom");
     assertTrue(testVenue.getName().equals("Wonder Ballroom"));
   }
+
+  @Test
+  public void all_returnsListOfAllInstancesOfVenue(){
+    Venue oneVenue = new Venue("Wonder Ballroom");
+    oneVenue.save();
+    Venue twoVenue = new Venue("Crystal Ballroom");
+    twoVenue.save();
+    Venue threeVenue = new Venue("Crystal Ballroom");
+    threeVenue.save();
+    assertEquals(3, Venue.all().size());
+  }
+
   @Test
   public void save_savesToDatabaseAndSavesLocalVenue_true(){
     Venue testVenue = new Venue("Crystal");
