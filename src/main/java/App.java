@@ -49,7 +49,7 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    post("/edit-band", (req,res) -> {
+    post("/bands/edit-band", (req,res) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       String editName = req.queryParams("edit-name");
       Band currentBand = Band.find(Integer.parseInt(req.queryParams("band-id")));
