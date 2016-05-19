@@ -58,6 +58,14 @@ public class App {
       return null;
     });
 
+    get("/bands/:id/delete", (req,res) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Band currentBand = Band.find(Integer.parseInt(req.params("id")));
+      currentBand.delete();
+      res.redirect("/bands");
+      return null;
+    });
+
     post("/add_venue", (req,res) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       String venueName = req.queryParams("venue-name");
