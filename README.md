@@ -17,7 +17,7 @@ Exercise in many-to-many relationships for SQL integration in java web app.
 ```
 $ postgres
 ```
-* _Open a new tab in terminal and create the `repo_db_name` database:_
+* _Open a new tab in terminal and create the `band_tracker` database:_
 ```
 $ psql
 $ CREATE DATABASE band_tracker;
