@@ -1,12 +1,6 @@
 <h1>
 $band.getName() has played these venues.
 </h1>
-<form action="/bands/edit-band" method="post">
-  <label for="edit-name">Edit Band Name</label><br>
-  <input type="text" name="edit-name" class="form-control" id="edit-name">
-  <input type="hidden" value="$band.getId()" name="band-id" class="form-control" id="band-id">
-  <button type="submit" class="btn btn-primary" id="edit-band-submit">Submit</button>
-</form>
 <ul>
   #foreach ($venue in $band.getVenues())
   <li>$venue.getName()
@@ -27,7 +21,13 @@ $band.getName() has played these venues.
   </div>
   <button type="submit" class="btn btn-primary" id="new-band-submit">Submit</button>
 </form>
-
+<br><br><br>
+<form action="/bands/edit-band" method="post">
+  <label for="edit-name">Edit Band Name</label><br>
+  <input type="text" name="edit-name" class="form-control" id="edit-name">
+  <input type="hidden" value="$band.getId()" name="band-id" class="form-control" id="band-id">
+  <button type="submit" class="btn btn-primary" id="edit-band-submit">Submit</button>
+</form>
 <a href="/bands">Back to all bands</a>
 <br>
 <br>
